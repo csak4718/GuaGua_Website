@@ -1,0 +1,1 @@
+web: gunicorn guaguasite.wsgi --log-file -
