@@ -35,7 +35,6 @@ def results(request, question_id):
  
     for i in range(0, len(r)):
         if (r['results'][i]['objectId']==question_id):
-            #global context
             idx=i
 
     context = {
