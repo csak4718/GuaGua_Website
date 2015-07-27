@@ -34,7 +34,7 @@ def results(request, question_id):
     r = json.loads(connection.getresponse().read())
 
     for i in range(0, len(r['results'])):
-        if (r['results'][i]['objectId']=='iVSEnwugjn'):
+        if (r['results'][i]['objectId']==question_id):
             idx=i
 
     context = {
