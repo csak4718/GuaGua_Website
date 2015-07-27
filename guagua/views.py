@@ -32,9 +32,9 @@ def results(request, question_id):
        "X-Parse-REST-API-Key": "9CuCkIj1wCODNiCpj9lOT8LfvOTKduf5fJeQa9lc"
      })
     r = json.loads(connection.getresponse().read())
- 
-    for i in range(0, len(r)):
-        if (r['results'][i]['objectId']==question_id):
+
+    for i in range(0, len(r['results'])):
+        if (r['results'][i]['objectId']=='iVSEnwugjn'):
             idx=i
 
     context = {
