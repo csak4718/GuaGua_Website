@@ -20,8 +20,8 @@ def index(request):
     context = {'question': r['results']}
     print r['results'][0]
     return HttpResponse("Hello, world. You're at the guagua index.")
-    
-idx=0    
+
+idx=0
 def results(request, question_id):
     #latest_question_list = Question.objects.order_by('-pub_date')[:5]
     global idx
@@ -37,23 +37,32 @@ def results(request, question_id):
         if (r['results'][i]['objectId']==question_id):
             idx=i
 
+    if r['results'][idx]['A'] == 0 and r['results'][idx]['B'] == 0:
+        percentA = 0
+        percentB = 0
+    else:
+        percentA = 100* r['results'][idx]['A'] / (r['results'][idx]['A']+r['results'][idx]['B'])
+        percentB = 100* r['results'][idx]['B'] / (r['results'][idx]['A']+r['results'][idx]['B'])
+
     context = {
             'numA': r['results'][idx]['A'],
             'numB': r['results'][idx]['B'],
+            'progressA': percentA,
+            'progressB': percentB,
             'choiceA': r['results'][idx]['QA'],
-            'choiceB': r['results'][idx]['QB'], 
+            'choiceB': r['results'][idx]['QB'],
             'title': r['results'][idx]['prayer'],
             # 'tag': r['results'][idx]['tag'],
             'createdAt': r['results'][idx]['createdAt'],
-            'updatedAt': r['results'][idx]['updatedAt'],  
-            }            
+            'updatedAt': r['results'][idx]['updatedAt'],
+            }
     return render(request, 'guagua/results.html', context)
-            
-            
-            
-            
-    
-    
-    
+
+
+
+
+
+
+
     #response = "You're looking at the results of question %s."
     #return HttpResponse(response % question_id)
