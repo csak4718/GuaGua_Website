@@ -66,8 +66,6 @@
 	        </div>
 	      </nav>
 
-
-
 			<div class="card">
 				<h2>{{title}}</h2>
 
@@ -87,14 +85,39 @@
 					</div>
 				</div>
 
+				<p>{{comments_list}}</p>
 
-				<p>{{choiceA}}: {{numA}}</p>
-				<p>{{choiceB}}: {{numB}}</p>
-				<br>
-				<p>Category: {{tag}}</p>
-				<p>{{createdAt}}</p>
-				<p>{{updatedAt}}</p>
+
+
+				<%
+
+					{{comments_list_size}}
+
+				%>
+
+
+
+
+
+				<!-- <ul>
+				{% for item in messages %}
+				    <li>{{ item }}</li>
+				{% endfor %}
+				</ul> -->
+
+
+
+				<ul>
+				{% for item in comments_list %}
+				    <li>{{ item.msg }}</li>
+				{% endfor %}
+				</ul>
+
+
+
 			</div> <!-- card -->
 		</div> <!-- container theme-showcase -->
+
+
 	</body>
 </html>
